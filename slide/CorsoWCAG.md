@@ -182,13 +182,17 @@ Assicura longevità del sito e adattamento a nuovi dispositivi.
 
 ---
 
-## Livelli di Conformità 🏅
+## Evoluzione
+
+### Evoluzione WCAG ⏳
+
+1999 ➡️ WCAG 1.0 | 2008 ➡️ WCAG 2.0 | 2018 ➡️ WCAG 2.1 | 2023 ➡️ WCAG 2.2
+
+### Livelli di Conformità 🏅
+
 - **A**: Requisiti base (obbligatorio per legge in UE)
 - **AA**: Standard raccomandato (soddisfa la maggior parte delle disabilità)
 - **AAA**: Ottimizzazione avanzata (contesti specifici)
-
-## Evoluzione WCAG ⏳
-1999 ➡️ WCAG 1.0 | 2008 ➡️ WCAG 2.0 | 2018 ➡️ WCAG 2.1 | 2023 ➡️ WCAG 2.2
 
 ---
 
