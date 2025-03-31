@@ -394,7 +394,48 @@ Assicura longevità del sito e adattamento a nuovi dispositivi.
 
 ---
 
-## 9. Testing Completo
+## 9. Focus Visibility (2.4.7) 🔍
+
+### Prima
+```css
+.button:focus { outline: none; }
+```
+**Problema**: Focus non visibile per utenti keyboard-only.
+
+### Dopo
+```css
+.button:focus { 
+    outline: 3px solid #0056b3; 
+    outline-offset: 2px;
+}
+```
+**Strumenti**:
+- Tasti `Tab` + `Shift+Tab` per test manuale
+- Focus Order Viewer in axe DevTools
+
+---
+
+## 10. Lingua della Pagina (3.1.1) 🌐
+
+### Prima
+```html
+<html>
+<head><title>Welcome</title></head>
+```
+**Problema**: Lingua non dichiarata per screen reader.
+
+### Dopo
+```html
+<html lang="it">
+<head><title>Benvenuto</title></head>
+```
+**Verifica**:
+- Validatore HTML (https://validator.w3.org/)
+- Strumento: axe "html-has-lang" rule
+
+---
+
+## Testing Completo
 
 **Checklist**:
 
@@ -435,27 +476,7 @@ L'immagine di sfondo è stata generata con <https://app.haikei.app>
 ## IN PREPARAZIONE
 
 ---
----
-## 10. Focus Visibility (2.4.7) 🔍
 
-### Prima
-```css
-.button:focus { outline: none; }
-```
-**Problema**: Focus non visibile per utenti keyboard-only.
-
-### Dopo
-```css
-.button:focus { 
-    outline: 3px solid #0056b3; 
-    outline-offset: 2px;
-}
-```
-**Strumenti**:
-- Tasti `Tab` + `Shift+Tab` per test manuale
-- Focus Order Viewer in axe DevTools
-
----
 
 ## 11. Tabelle Accessibili (1.3.1) 📊
 
@@ -477,26 +498,6 @@ L'immagine di sfondo è stata generata con <https://app.haikei.app>
 **Strumenti**:
 - Screen reader test con NVDA
 - Table Inspector in WAVE
-
----
-
-## 12. Lingua della Pagina (3.1.1) 🌐
-
-### Prima
-```html
-<html>
-<head><title>Welcome</title></head>
-```
-**Problema**: Lingua non dichiarata per screen reader.
-
-### Dopo
-```html
-<html lang="it">
-<head><title>Benvenuto</title></head>
-```
-**Verifica**:
-- Validatore HTML (https://validator.w3.org/)
-- Strumento: axe "html-has-lang" rule
 
 ---
 
