@@ -263,6 +263,7 @@ Assicura longevità del sito e adattamento a nuovi dispositivi.
 
 - HTML Validator (validator.w3.org)
 - Axe DevTools (estensione browser)
+- IBM Accessibility Equal Access Toolkit: Accessibility Checker
 
 ---
 
@@ -338,8 +339,7 @@ Assicura longevità del sito e adattamento a nuovi dispositivi.
 
 **Strumenti**:
 
-- Amara (per creare sottotitoli)
-- YouTube Studio (auto-captioning)
+- Amara (per creare sottotitoli) - YouTube Studio (auto-captioning)
 
 ---
 
@@ -366,8 +366,7 @@ Assicura longevità del sito e adattamento a nuovi dispositivi.
 
 **Strumenti**:
 
-- Browser DevTools (responsive mode)
-- Lighthouse (mobile accessibility)
+- Browser DevTools (responsive mode) - Lighthouse (mobile accessibility)
 
 ---
 
@@ -429,3 +428,163 @@ Ogni immagine inserita riporta la fonte
 L'autore ha generato parte di questo testo con strumenti di AI. Dopo aver generato la bozza del documento, l'autore ha rivisto, modificato e integrato il testo a proprio piacimento e si assume la responsabilità  ultima del contenuto di questa pubblicazione.
 
 L'immagine di sfondo è stata generata con <https://app.haikei.app>
+
+
+---
+
+## IN PREPARAZIONE
+
+---
+---
+## 10. Focus Visibility (2.4.7) 🔍
+
+### Prima
+```css
+.button:focus { outline: none; }
+```
+**Problema**: Focus non visibile per utenti keyboard-only.
+
+### Dopo
+```css
+.button:focus { 
+    outline: 3px solid #0056b3; 
+    outline-offset: 2px;
+}
+```
+**Strumenti**:
+- Tasti `Tab` + `Shift+Tab` per test manuale
+- Focus Order Viewer in axe DevTools
+
+---
+
+## 11. Tabelle Accessibili (1.3.1) 📊
+
+### Prima
+```html
+<div>Nome</div><div>Età</div>
+<div>Mario</div><div>30</div>
+```
+**Problema**: Struttura non semantica per dati tabellari.
+
+### Dopo
+```html
+<table>
+  <caption>Dipendenti</caption>
+  <thead><tr><th scope="col">Nome</th><th scope="col">Età</th></tr></thead>
+  <tbody><tr><td>Mario</td><td>30</td></tr></tbody>
+</table>
+```
+**Strumenti**:
+- Screen reader test con NVDA
+- Table Inspector in WAVE
+
+---
+
+## 12. Lingua della Pagina (3.1.1) 🌐
+
+### Prima
+```html
+<html>
+<head><title>Welcome</title></head>
+```
+**Problema**: Lingua non dichiarata per screen reader.
+
+### Dopo
+```html
+<html lang="it">
+<head><title>Benvenuto</title></head>
+```
+**Verifica**:
+- Validatore HTML (https://validator.w3.org/)
+- Strumento: axe "html-has-lang" rule
+
+---
+
+## 13. Saltare Contenuti Ripetitivi (2.4.1) ⏭️
+
+### Prima
+```html
+<header>
+  <nav>...</nav>
+</header>
+```
+**Problema**: Nessun modo per saltare la navigazione.
+
+### Dopo
+```html
+<a href="#main" class="skip-link">Salta al contenuto</a>
+<nav>...</nav>
+<main id="main">...</main>
+
+<style>
+.skip-link {
+    position: absolute;
+    left: -9999px;
+}
+.skip-link:focus {
+    left: 10px;
+}
+</style>
+```
+**Strumenti**:
+- Test con screen reader + tastiera
+- HeadingMap estensione
+
+---
+
+## 14. Animazioni e Motion (2.3.3) 🎬
+
+### Prima
+```css
+.slider { transition: transform 0.8s; }
+```
+**Problema**: Animazioni potenzialmente dannose per utenti sensibili.
+
+### Dopo
+```css
+@media (prefers-reduced-motion: reduce) {
+    .slider { transition: none; }
+}
+```
+**Strumenti**:
+- Simulatore preferenze movimento: Chrome DevTools > Rendering
+- CSS Media Queries Level 5 validator
+
+---
+
+## 15. Link Descrittivi (2.4.4) 🔗
+
+### Prima
+```html
+<a href="/blog">Clicca qui</a>
+```
+**Problema**: Testo non contestuale fuori contesto.
+
+### Dopo
+```html
+<a href="/blog">Leggi gli ultimi articoli del blog</a>
+```
+**Verifica**:
+- Lista link con Web Developer Toolbar
+- Strumento: Link Text Analyzer (https://axesslab.com/link-texts/)
+
+---
+
+## 16. Ruoli ARIA per Widget (4.1.2) 🛠️
+
+### Prima
+```html
+<div class="modal">...</div>
+```
+**Problema**: Ruolo non definito per componenti complessi.
+
+### Dopo
+```html
+<div class="modal" role="dialog" aria-labelledby="modalTitle">
+    <h2 id="modalTitle">Conferma ordine</h2>
+    ...
+</div>
+```
+**Strumenti**:
+- ARC Toolkit (https://www.paciellogroup.com/toolkit/)
+- Accessible Name Calculator
