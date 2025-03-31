@@ -196,7 +196,18 @@ Assicura longevità del sito e adattamento a nuovi dispositivi.
 
 ---
 
-## 1. Testo Alternativo (1.1.1)
+## Perceivable
+
+Le informazioni e i componenti dell'interfaccia utente devono essere presentabili agli utenti in modo che possano percepirlo.
+
+- **1.1.1** Non-text Content (A): Testo alternativo per contenuti non testuali
+
+?? Meglio i titoli di primo livello ???
+
+
+---
+
+## Testo Alternativo (1.1.1) (A)
 
 ### Prima
 
@@ -219,7 +230,60 @@ Assicura longevità del sito e adattamento a nuovi dispositivi.
 
 ---
 
-## 2. Contrasto Colori (1.4.3)
+## 1.2 Time-based Media
+
+Ogni contenuto multimediale deve avere un'alternativa testuale.
+- **1.2.1** Audio-only e Video-only (A): Trascrizione o audio descrittivo
+- **1.2.2** Captions (A): Sottotitoli per video
+- **1.2.3** Audio Description or Media Alternative (A): Descrizione audio o alternativa testuale
+- **1.2.4** Captions (Live) (AA): Sottotitoli in tempo reale
+- **1.2.5** Audio Description (Prerecorded) (AA): Descrizione audio per video preregistrati
+- **1.2.6**  Sign Language (Prerecorded) (AAA): Lingua dei segni per video preregistrati
+- **1.2.7** Extended Audio Description (AAA): Descrizione audio estesa per video
+- **1.2.8** Media Alternative (AAA): Alternativa testuale per media
+- **1.2.9** Audio-only (AAA): Trascrizione per audio-only
+
+---
+
+## Multimedia (1.2.2) (A)
+
+### Prima
+
+```html
+<video controls>
+  <source src="video.mp4">
+</video>
+```
+
+**Problema**: Mancano sottotitoli.
+
+### Dopo
+
+```html
+<video controls>
+  <source src="video.mp4">
+  <track src="sottotitoli.vtt" kind="captions" label="Italiano">
+</video>
+```
+
+**Strumenti**:
+
+- Amara (per creare sottotitoli) - YouTube Studio (auto-captioning)
+
+---
+
+# Distinguishable 1.4
+
+Rendere facile agli utenti percepire i contenuti e le UI.
+
+- **1.4.1** Use of Color (A): Non usare solo il colore per trasmettere informazioni
+
+
+....
+
+---
+
+## Contrasto Colori (1.4.3) (AA)
 
 ### Prima
 
@@ -242,7 +306,7 @@ Assicura longevità del sito e adattamento a nuovi dispositivi.
 
 ---
 
-## 3. HTML Semantico (4.1.2)
+## HTML Semantico (4.1.2) (A)
 
 ### Prima
 
@@ -267,7 +331,7 @@ Assicura longevità del sito e adattamento a nuovi dispositivi.
 
 ---
 
-## 4. Form Accessibili (3.3.2)
+## Form Accessibili (3.3.2) (A)
 
 ### Prima
 
@@ -293,7 +357,13 @@ Assicura longevità del sito e adattamento a nuovi dispositivi.
 
 ---
 
-## 5. Navigazione da Tastiera (2.1.1)
+## Guideline 2.1 Keyboard Accessible
+
+Occorre rendere tutte le funzionalità accessibili da tastiera.
+
+---
+
+## Navigazione da Tastiera (2.1.1) (A)
 
 ### Prima
 
@@ -313,33 +383,6 @@ Assicura longevità del sito e adattamento a nuovi dispositivi.
 
 - Usa `Tab` e `Enter` per testare
 - Strumento: Tota11y (khan.github.io/tota11y/)
-
----
-
-## 6. Multimedia (1.2.2)
-
-### Prima
-
-```html
-<video controls>
-  <source src="video.mp4">
-</video>
-```
-
-**Problema**: Mancano sottotitoli.
-
-### Dopo
-
-```html
-<video controls>
-  <source src="video.mp4">
-  <track src="sottotitoli.vtt" kind="captions" label="Italiano">
-</video>
-```
-
-**Strumenti**:
-
-- Amara (per creare sottotitoli) - YouTube Studio (auto-captioning)
 
 ---
 
