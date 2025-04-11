@@ -200,14 +200,14 @@ Assicura longevità del sito e adattamento a nuovi dispositivi.
 
 Le informazioni e i componenti dell'interfaccia utente devono essere presentabili agli utenti in modo che possano percepirlo.
 
-- **1.1.1** Non-text Content (A): Testo alternativo per contenuti non testuali
-
-?? Meglio i titoli di primo livello ???
-
+- **1.1** Non-text Content (A): Testo alternativo per contenuti non testuali
+- **1.2** Time-based Media (A): Contenuti multimediali con alternative testuali
+- **1.3** Adaptable (A): Contenuti strutturati in modo semantico
+- **1.4** Distinguishable (A): Facilità di percezione dei contenuti e delle UI
 
 ---
 
-## Testo Alternativo (1.1.1) (A)
+## 1.1.1 Testo Alternativo (A)
 
 ### Prima
 
@@ -245,7 +245,11 @@ Ogni contenuto multimediale deve avere un'alternativa testuale.
 
 ---
 
-## Multimedia (1.2.2) (A)
+## 1.2.1 Audio-only e Video-only (A)
+
+---
+
+## 1.2.2 Captions (A)
 
 ### Prima
 
@@ -272,14 +276,86 @@ Ogni contenuto multimediale deve avere un'alternativa testuale.
 
 ---
 
+## 1.2.3 Audio Description or Media Alternative (A)
+
+---
+
+## 1.2.4 Captions (Live) (AA)
+
+---
+
+## 1.2.5 Audio Description (Prerecorded) (AA)
+
+---
+
+## 1.2.6  Sign Language (Prerecorded) (AAA)
+
+---
+
+## 1.2.7 Extended Audio Description (AAA)
+
+---
+
+## 1.2.8 Media Alternative (AAA)
+
+---
+
+## 1.2.9 Audio-only (AAA)
+
+---
+
+## 1.3 Adaptable
+
+
+- **1.3.1** Info and Relationships (A): Struttura semantica dei contenuti
+- **1.3.2** Meaningful Sequence (A): Sequenza significativa dei contenuti
+- **1.3.3** Sensory Characteristics (A): Caratteristiche sensoriali per identificare elementi
+- **1.3.4** Orientation (AA): Orientamento del layout
+- **1.3.5** Identify Input Purpose (AA): Identificazione del tipo di input
+- **1.3.6** Identify Purpose (AAA): Identificazione del tipo di contenuto
+
+---
+
+## 1.3.1 Tabelle Accessibili
+
+### Prima
+```html
+<div>Nome</div><div>Età</div>
+<div>Mario</div><div>30</div>
+```
+**Problema**: Struttura non semantica per dati tabellari.
+
+### Dopo
+```html
+<table>
+  <caption>Dipendenti</caption>
+  <thead><tr><th scope="col">Nome</th><th scope="col">Età</th></tr></thead>
+  <tbody><tr><td>Mario</td><td>30</td></tr></tbody>
+</table>
+```
+**Strumenti**:
+- Screen reader test con NVDA
+- Table Inspector in WAVE
+
+---
+
 # Distinguishable 1.4
 
 Rendere facile agli utenti percepire i contenuti e le UI.
 
 - **1.4.1** Use of Color (A): Non usare solo il colore per trasmettere informazioni
-
-
-....
+- **1.4.2** Audio Control (A): Controllo audio per contenuti audio
+- **1.4.3** Contrast (Minimum) (AA): Contrasto minimo 4.5:1 per testo normale
+- **1.4.4** Resize Text (AA): Testo ridimensionabile fino al 200%
+- **1.4.5** Images of Text (AA): Testo non come immagine
+- **1.4.6** Contrast (Enhanced) (AAA): Contrasto minimo 7:1 per testo normale
+- **1.4.7** Low or No Background Audio (AAA): Audio di sottofondo basso o assente
+- **1.4.8** Visual Presentation (AAA): Presentazione visiva dei contenuti
+- **1.4.9** Images of Text (No Exception) (AAA): Immagini di testo non ammesse
+- **1.4.10** Reflow (AA): Contenuti reflowabili senza perdita di informazioni
+- **1.4.11** Non-text Contrast (AA): Contrasto non testuale 3:1
+- **1.4.12** Text Spacing (AA): Spaziatura del testo
+- **1.4.13** Content on Hover or Focus (AA): Contenuti visibili al passaggio del mouse o al focus
 
 ---
 
@@ -306,28 +382,186 @@ Rendere facile agli utenti percepire i contenuti e le UI.
 
 ---
 
-## HTML Semantico (4.1.2) (A)
+## Responsive Design (1.4.10)
 
 ### Prima
 
 ```html
-<div>Scopri di più</div>
+<meta name="viewport" content="width=device-width">
 ```
 
-**Problema**: Elemento non semantico per bottoni/navigazione.
+**CSS problematico**:
+
+```css
+.container { width: 1200px; }
+```
 
 ### Dopo
 
-```html
-<button aria-label="Apri menu">Scopri di più</button>
-<nav aria-label="Menu principale">...</nav>
+```css
+.container { max-width: 100%; }
+@media (max-width: 768px) { ... }
 ```
 
 **Strumenti**:
 
-- HTML Validator (validator.w3.org)
-- Axe DevTools (estensione browser)
-- IBM Accessibility Equal Access Toolkit: Accessibility Checker
+- Browser DevTools (responsive mode) - Lighthouse (mobile accessibility)
+
+---
+
+## Operable 2.1
+
+Le interfacce utente e la navigazione devono essere operabili.
+
+- **2.1** Keyboard Accessible (A): Tutte le funzionalità devono essere accessibili da tastiera
+- **2.2** Enough Time (A): Tempo sufficiente per completare le attività
+- **2.3** No Timing (A): Nessun limite di tempo per completare le attività
+- **2.4** Navigable (A): Navigazione e ricerca facili
+- **2.5** Input Modalities (A): Supporto per diverse modalità di input
+
+---
+
+## Navigazione da Tastiera (2.1.1) (A)
+
+### Prima
+
+```html
+<div class="dropdown" onclick="openMenu()">Menu</div>
+```
+
+**Problema**: Non navigabile via tastiera (manca `tabindex`).
+
+### Dopo
+
+```html
+<div class="dropdown" tabindex="0" role="button" aria-expanded="false">Menu</div>
+```
+
+**Verifica**:
+
+- Usa `Tab` e `Enter` per testare
+- Strumento: Tota11y (khan.github.io/tota11y/)
+
+---
+
+## Animazioni e Motion (2.3.3) 🎬
+
+### Prima
+```css
+.slider { transition: transform 0.8s; }
+```
+**Problema**: Animazioni potenzialmente dannose per utenti sensibili.
+
+### Dopo
+```css
+@media (prefers-reduced-motion: reduce) {
+    .slider { transition: none; }
+}
+```
+**Strumenti**:
+- Simulatore preferenze movimento: Chrome DevTools > Rendering
+- CSS Media Queries Level 5 validator
+
+---
+
+## Saltare Contenuti Ripetitivi (2.4.1) ⏭️
+
+### Prima
+```html
+<header>
+  <nav>...</nav>
+</header>
+```
+**Problema**: Nessun modo per saltare la navigazione.
+
+### Dopo
+```html
+<a href="#main" class="skip-link">Salta al contenuto</a>
+<nav>...</nav>
+<main id="main">...</main>
+
+<style>
+.skip-link {
+    position: absolute;
+    left: -9999px;
+}
+.skip-link:focus {
+    left: 10px;
+}
+</style>
+```
+**Strumenti**:
+- Test con screen reader + tastiera
+- HeadingMap estensione
+
+---
+
+## Link Descrittivi (2.4.4) 🔗
+
+### Prima
+```html
+<a href="/blog">Clicca qui</a>
+```
+**Problema**: Testo non contestuale fuori contesto.
+
+### Dopo
+```html
+<a href="/blog">Leggi gli ultimi articoli del blog</a>
+```
+**Verifica**:
+- Lista link con Web Developer Toolbar
+- Strumento: Link Text Analyzer (https://axesslab.com/link-texts/)
+
+---
+
+## Focus Visibility (2.4.7) 🔍
+
+### Prima
+```css
+.button:focus { outline: none; }
+```
+**Problema**: Focus non visibile per utenti keyboard-only.
+
+### Dopo
+```css
+.button:focus { 
+    outline: 3px solid #0056b3; 
+    outline-offset: 2px;
+}
+```
+**Strumenti**:
+- Tasti `Tab` + `Shift+Tab` per test manuale
+- Focus Order Viewer in axe DevTools
+
+---
+
+## Understandable
+
+I contenuti e le operazioni dell'interfaccia utente devono essere comprensibili.
+
+- **3.1** Readable (A): Testo leggibile e comprensibile
+- **3.2** Predictable (A): Interfaccia prevedibile e coerente
+- **3.3** Input Assistance (A): Aiuto per l'input e la correzione degli errori
+
+---
+
+## 10. Lingua della Pagina (3.1.1) 🌐
+
+### Prima
+```html
+<html>
+<head><title>Welcome</title></head>
+```
+**Problema**: Lingua non dichiarata per screen reader.
+
+### Dopo
+```html
+<html lang="it">
+<head><title>Benvenuto</title></head>
+```
+**Verifica**:
+- Validatore HTML (https://validator.w3.org/)
+- Strumento: axe "html-has-lang" rule
 
 ---
 
@@ -357,63 +591,59 @@ Rendere facile agli utenti percepire i contenuti e le UI.
 
 ---
 
-## Guideline 2.1 Keyboard Accessible
+## Robust
 
-Occorre rendere tutte le funzionalità accessibili da tastiera.
+I contenuti devono essere robusti e compatibili con le tecnologie assistive.
 
 ---
 
-## Navigazione da Tastiera (2.1.1) (A)
+## HTML Semantico (4.1.2) (A)
 
 ### Prima
 
 ```html
-<div class="dropdown" onclick="openMenu()">Menu</div>
+<div>Scopri di più</div>
 ```
 
-**Problema**: Non navigabile via tastiera (manca `tabindex`).
+**Problema**: Elemento non semantico per bottoni/navigazione.
 
 ### Dopo
 
 ```html
-<div class="dropdown" tabindex="0" role="button" aria-expanded="false">Menu</div>
-```
-
-**Verifica**:
-
-- Usa `Tab` e `Enter` per testare
-- Strumento: Tota11y (khan.github.io/tota11y/)
-
----
-
-## 7. Responsive Design (1.4.10)
-
-### Prima
-
-```html
-<meta name="viewport" content="width=device-width">
-```
-
-**CSS problematico**:
-
-```css
-.container { width: 1200px; }
-```
-
-### Dopo
-
-```css
-.container { max-width: 100%; }
-@media (max-width: 768px) { ... }
+<button aria-label="Apri menu">Scopri di più</button>
+<nav aria-label="Menu principale">...</nav>
 ```
 
 **Strumenti**:
 
-- Browser DevTools (responsive mode) - Lighthouse (mobile accessibility)
+- HTML Validator (validator.w3.org)
+- Axe DevTools (estensione browser)
+- IBM Accessibility Equal Access Toolkit: Accessibility Checker
 
 ---
 
-## 8. ARIA per Dinamicità (4.1.3)
+## Ruoli ARIA per Widget (4.1.2) 🛠️
+
+### Prima
+```html
+<div class="modal">...</div>
+```
+**Problema**: Ruolo non definito per componenti complessi.
+
+### Dopo
+```html
+<div class="modal" role="dialog" aria-labelledby="modalTitle">
+    <h2 id="modalTitle">Conferma ordine</h2>
+    ...
+</div>
+```
+**Strumenti**:
+- ARC Toolkit (https://www.paciellogroup.com/toolkit/)
+- Accessible Name Calculator
+
+---
+
+## ARIA per Dinamicità (4.1.3)
 
 ### Prima
 
@@ -434,47 +664,6 @@ Occorre rendere tutte le funzionalità accessibili da tastiera.
 - NVDA Screen Reader (nvaccess.org)
 - VoiceOver (macOS)
 - Simulatore Daltonismo <https://www.toptal.com/designers/colorfilter
-
----
-
-## 9. Focus Visibility (2.4.7) 🔍
-
-### Prima
-```css
-.button:focus { outline: none; }
-```
-**Problema**: Focus non visibile per utenti keyboard-only.
-
-### Dopo
-```css
-.button:focus { 
-    outline: 3px solid #0056b3; 
-    outline-offset: 2px;
-}
-```
-**Strumenti**:
-- Tasti `Tab` + `Shift+Tab` per test manuale
-- Focus Order Viewer in axe DevTools
-
----
-
-## 10. Lingua della Pagina (3.1.1) 🌐
-
-### Prima
-```html
-<html>
-<head><title>Welcome</title></head>
-```
-**Problema**: Lingua non dichiarata per screen reader.
-
-### Dopo
-```html
-<html lang="it">
-<head><title>Benvenuto</title></head>
-```
-**Verifica**:
-- Validatore HTML (https://validator.w3.org/)
-- Strumento: axe "html-has-lang" rule
 
 ---
 
@@ -509,126 +698,15 @@ Ogni immagine inserita riporta la fonte
 
 ## Disclaimer
 
-L'autore ha generato parte di questo testo con strumenti di AI. Dopo aver generato la bozza del documento, l'autore ha rivisto, modificato e integrato il testo a proprio piacimento e si assume la responsabilità  ultima del contenuto di questa pubblicazione.
+Questo materiale è stato realizzato con le seguenti modalità:
 
-L'immagine di sfondo è stata generata con <https://app.haikei.app>
+- Contenuto testuale
+Redatto attraverso sistemi di AI per la generazione della bozza iniziale, successivamente rielaborato, verificato e integrato manualmente dall'autore.
 
+- Elementi grafici
+L'immagine di sfondo è stata generata tramite [Haikei.app](https://app.haikei.app). Eventuali altri elementi visivi derivano da banche immagini royalty-free o creazioni originali.
 
----
+- Ricerche
+I dati e le informazioni citate sono state raccolte da fonti pubbliche accessibili online, selezionate e contestualizzate in modo critico dall'autore.
 
-## IN PREPARAZIONE
-
----
-
-
-## 11. Tabelle Accessibili (1.3.1) 📊
-
-### Prima
-```html
-<div>Nome</div><div>Età</div>
-<div>Mario</div><div>30</div>
-```
-**Problema**: Struttura non semantica per dati tabellari.
-
-### Dopo
-```html
-<table>
-  <caption>Dipendenti</caption>
-  <thead><tr><th scope="col">Nome</th><th scope="col">Età</th></tr></thead>
-  <tbody><tr><td>Mario</td><td>30</td></tr></tbody>
-</table>
-```
-**Strumenti**:
-- Screen reader test con NVDA
-- Table Inspector in WAVE
-
----
-
-## 13. Saltare Contenuti Ripetitivi (2.4.1) ⏭️
-
-### Prima
-```html
-<header>
-  <nav>...</nav>
-</header>
-```
-**Problema**: Nessun modo per saltare la navigazione.
-
-### Dopo
-```html
-<a href="#main" class="skip-link">Salta al contenuto</a>
-<nav>...</nav>
-<main id="main">...</main>
-
-<style>
-.skip-link {
-    position: absolute;
-    left: -9999px;
-}
-.skip-link:focus {
-    left: 10px;
-}
-</style>
-```
-**Strumenti**:
-- Test con screen reader + tastiera
-- HeadingMap estensione
-
----
-
-## 14. Animazioni e Motion (2.3.3) 🎬
-
-### Prima
-```css
-.slider { transition: transform 0.8s; }
-```
-**Problema**: Animazioni potenzialmente dannose per utenti sensibili.
-
-### Dopo
-```css
-@media (prefers-reduced-motion: reduce) {
-    .slider { transition: none; }
-}
-```
-**Strumenti**:
-- Simulatore preferenze movimento: Chrome DevTools > Rendering
-- CSS Media Queries Level 5 validator
-
----
-
-## 15. Link Descrittivi (2.4.4) 🔗
-
-### Prima
-```html
-<a href="/blog">Clicca qui</a>
-```
-**Problema**: Testo non contestuale fuori contesto.
-
-### Dopo
-```html
-<a href="/blog">Leggi gli ultimi articoli del blog</a>
-```
-**Verifica**:
-- Lista link con Web Developer Toolbar
-- Strumento: Link Text Analyzer (https://axesslab.com/link-texts/)
-
----
-
-## 16. Ruoli ARIA per Widget (4.1.2) 🛠️
-
-### Prima
-```html
-<div class="modal">...</div>
-```
-**Problema**: Ruolo non definito per componenti complessi.
-
-### Dopo
-```html
-<div class="modal" role="dialog" aria-labelledby="modalTitle">
-    <h2 id="modalTitle">Conferma ordine</h2>
-    ...
-</div>
-```
-**Strumenti**:
-- ARC Toolkit (https://www.paciellogroup.com/toolkit/)
-- Accessible Name Calculator
+La direzione intellettuale, le scelte contenutistiche e l'accuratezza delle informazioni restano sotto la piena responsabilità dell'autore.
