@@ -207,7 +207,13 @@ Le informazioni e i componenti dell'interfaccia utente devono essere presentabil
 
 ---
 
-## 1.1.1 Testo Alternativo (A)
+## 1.1 Non-text Content (A)
+
+I contenuti non testuali devono avere un'alternativa testuale che consenta agli utenti di comprendere il contenuto.
+
+---
+
+## 1.1 Testo Alternativo (A)
 
 ### Prima
 
@@ -246,6 +252,36 @@ Ogni contenuto multimediale deve avere un'alternativa testuale.
 ---
 
 ## 1.2.1 Audio-only e Video-only (A)
+
+### Prima
+
+```html
+<audio controls>
+  <source src="audio.mp3" type="audio/mpeg">
+</audio>
+```
+
+**Problema**: Non è fornita una trascrizione per il contenuto audio, rendendolo inaccessibile agli utenti non udenti.
+
+---
+
+## 1.2.1 Audio-only e Video-only (A) soluzione
+
+### Dopo
+
+```html
+<audio controls>
+  <source src="audio.mp3" type="audio/mpeg">
+</audio>
+<p>Trascrizione: "Benvenuti al nostro podcast. Oggi parleremo di accessibilità web e delle WCAG 2.1..."</p>
+```
+
+**Soluzione**: Aggiunta di una trascrizione testuale per il contenuto audio.
+
+**Strumenti**:
+
+- [Otter.ai](https://otter.ai) per generare trascrizioni.
+- [Sonix](https://sonix.ai) per trascrizioni automatiche.
 
 ---
 
