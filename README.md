@@ -41,7 +41,7 @@ Il corso copre i seguenti argomenti principali:
 
 Le slide sono disponibili nella directory `slide`. Sono in formato MD e possono essere visualizzate utilizzando un editor di testo o un visualizzatore di Markdown.
 
-__[Scarica gratuitamente le slide in formato PDF](https://github.com/matteobaccan/CorsoWCAG/blob/main/slide/CorsoWCAG.pdf)__
+**[Scarica gratuitamente le slide in formato PDF](https://github.com/matteobaccan/CorsoWCAG/blob/main/slide/CorsoWCAG.pdf)**
 
 ## Requisiti
 

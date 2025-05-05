@@ -240,6 +240,7 @@ I contenuti non testuali devono avere un'alternativa testuale che consenta agli 
 ## 1.2 Time-based Media
 
 Ogni contenuto multimediale deve avere un'alternativa testuale.
+
 - **1.2.1** Audio-only e Video-only (A): Trascrizione o audio descrittivo
 - **1.2.2** Captions (A): Sottotitoli per video
 - **1.2.3** Audio Description or Media Alternative (A): Descrizione audio o alternativa testuale
@@ -344,11 +345,13 @@ Ogni contenuto multimediale deve avere un'alternativa testuale.
 
 ## 1.2.3 Audio Description or Media Alternative (A) - soluzione
 
-**Soluzione**:  
+**Soluzione**:
+
 - Aggiunta di una traccia di descrizione audio (`kind="descriptions"`) per descrivere i contenuti visivi.  
 - Fornita un'alternativa testuale come opzione di fallback per gli utenti che non possono accedere alla descrizione audio.
 
-**Strumenti**:  
+**Strumenti**:
+
 - [Amara](https://amara.org) per creare descrizioni audio.  
 - [YouDescribe](https://youdescribe.org) per generare e condividere descrizioni audio.
 
@@ -379,11 +382,13 @@ Ogni contenuto multimediale deve avere un'alternativa testuale.
 </video>
 ```
 
-**Soluzione**:  
+**Soluzione**:
+
 - Aggiunta di sottotitoli in tempo reale per il video in diretta.
 - Utilizzo di un file `.vtt` aggiornato dinamicamente per fornire i sottotitoli.
 
-**Strumenti**:  
+**Strumenti**:
+
 - [OBS Studio](https://obsproject.com) con plugin per sottotitoli live.
 - [YouTube Live Captioning](https://support.google.com/youtube/answer/6373554) per generare sottotitoli automatici.  
 - [Web Captioner](https://webcaptioner.com) per trascrizioni in tempo reale.
@@ -418,6 +423,7 @@ Ogni contenuto multimediale deve avere un'alternativa testuale.
 ## 1.3.1 Tabelle Accessibili
 
 ### Prima
+
 ```html
 <div>Nome</div><div>Età</div>
 <div>Mario</div><div>30</div>
@@ -426,6 +432,7 @@ Ogni contenuto multimediale deve avere un'alternativa testuale.
 **Problema**: Struttura non semantica per dati tabellari.
 
 ### Dopo
+
 ```html
 <table>
   <caption>Dipendenti</caption>
@@ -435,9 +442,11 @@ Ogni contenuto multimediale deve avere un'alternativa testuale.
 ```
 
 **Strumenti**:
+
 - Screen reader test con NVDA - Table Inspector in WAVE
 
 ---
+
 ## 1.3.2 Meaningful Sequence (A)
 
 ### Prima
@@ -466,10 +475,12 @@ Ogni contenuto multimediale deve avere un'alternativa testuale.
 </div>
 ```
 
-**Soluzione**:  
+**Soluzione**:
+
 - Organizzare il contenuto in una sequenza logica e significativa per garantire che gli screen reader leggano le informazioni nell'ordine corretto.
 
-**Strumenti**:  
+**Strumenti**:
+
 - [axe DevTools](https://www.deque.com/axe/) per verificare la struttura del contenuto.  
 - Screen reader (es. NVDA o VoiceOver) per testare l'ordine di lettura.
 
@@ -497,11 +508,13 @@ Ogni contenuto multimediale deve avere un'alternativa testuale.
 <button style="background-color: red;" aria-label="Continua">Continua</button>
 ```
 
-**Soluzione**:  
+**Soluzione**:
+
 - Fornire istruzioni che non si basino esclusivamente su caratteristiche sensoriali come colore, forma o posizione.  
 - Aggiungere un'etichetta accessibile (`aria-label`) per descrivere il pulsante.
 
-**Strumenti**:  
+**Strumenti**:
+
 - [Contrast Checker](https://webaim.org/resources/contrastchecker/) per verificare il contrasto.  
 - Screen reader (es. NVDA o VoiceOver) per testare l'accessibilità.
 
@@ -529,11 +542,13 @@ Ogni contenuto multimediale deve avere un'alternativa testuale.
 <button style="background-color: red;" aria-label="Continua">Continua</button>
 ```
 
-**Soluzione**:  
+**Soluzione**:
+
 - Fornire istruzioni che non si basino esclusivamente su caratteristiche sensoriali come colore, forma o posizione.  
 - Aggiungere un'etichetta accessibile (`aria-label`) per descrivere il pulsante.
 
-**Strumenti**:  
+**Strumenti**:
+
 - [Contrast Checker](https://webaim.org/resources/contrastchecker/) per verificare il contrasto.  
 - Screen reader (es. NVDA o VoiceOver) per testare l'accessibilità.
 
@@ -724,16 +739,21 @@ Le interfacce utente e la navigazione devono essere operabili.
 ## 2.4.4 Link Purpose (In Context) (A)
 
 ### Prima
+
 ```html
 <a href="/blog">Clicca qui</a>
 ```
+
 **Problema**: Testo non contestuale fuori contesto.
 
 ### Dopo
+
 ```html
 <a href="/blog">Leggi gli ultimi articoli del blog</a>
 ```
+
 **Verifica**:
+
 - Lista link con Web Developer Toolbar
 - Strumento: Link Text Analyzer (https://axesslab.com/link-texts/)
 
@@ -742,19 +762,24 @@ Le interfacce utente e la navigazione devono essere operabili.
 ## 2.4.7 Focus Visible (AA)
 
 ### Prima
+
 ```css
 .button:focus { outline: none; }
 ```
+
 **Problema**: Focus non visibile per utenti keyboard-only.
 
 ### Dopo
+
 ```css
 .button:focus { 
     outline: 3px solid #0056b3; 
     outline-offset: 2px;
 }
 ```
+
 **Strumenti**:
+
 - Tasti `Tab` + `Shift+Tab` per test manuale
 - Focus Order Viewer in axe DevTools
 
@@ -840,7 +865,8 @@ I contenuti devono essere robusti e compatibili con le tecnologie assistive.
 </div>
 ```
 
-**Problema**:  
+**Problema**:
+
 - Struttura HTML non valida o mal formattata.  
 - Tag non chiusi correttamente o annidati in modo errato, causando problemi con i browser e le tecnologie assistive.
 
@@ -857,14 +883,15 @@ I contenuti devono essere robusti e compatibili con le tecnologie assistive.
 </div>
 ```
 
-**Soluzione**:  
+**Soluzione**:
+
 - Correggere la struttura HTML per garantire che sia valida e ben formattata.  
 - Utilizzare tag semantici e chiuderli correttamente.
 
-**Strumenti**:  
+**Strumenti**:
+
 - [W3C HTML Validator](https://validator.w3.org) per verificare la validità del codice.  
 - [axe DevTools](https://www.deque.com/axe/) per controllare errori di parsing.
-
 
 ---
 
@@ -911,11 +938,13 @@ I contenuti devono essere robusti e compatibili con le tecnologie assistive.
 <div id="status" role="status" aria-live="polite">Il tuo ordine è stato inviato!</div>
 ```
 
-**Soluzione**:  
+**Soluzione**:
+
 - Aggiungere l'attributo `role="status"` per indicare che si tratta di un messaggio di stato.  
 - Utilizzare `aria-live="polite"` per notificare i cambiamenti senza interrompere l'utente.
 
-**Nota**:  
+**Nota**:
+
 - Usare `aria-live="assertive"` per messaggi critici che richiedono attenzione immediata.
 
 ---
