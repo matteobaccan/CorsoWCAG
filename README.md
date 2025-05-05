@@ -44,7 +44,6 @@ Il corso copre i seguenti argomenti principali:
 
 ## Risorse
 
-- [Repository GitHub](https://github.com/matteobaccan/CorsoWCAG)
 - [WCAG 2.1 Linee Guida](https://www.w3.org/TR/WCAG21/)
 - [Corso HTML](https://github.com/matteobaccan/CorsoHTML)
 - [Corso CSS](https://github.com/matteobaccan/CorsoCSS)
